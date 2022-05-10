@@ -1,5 +1,5 @@
 {
-  "name": "lapadi-node-sdk",
+  "name": "@lapadi/node-sdk",
   "version": "1.0.1",
   "description": "",
   "main": "dist/index.js",
