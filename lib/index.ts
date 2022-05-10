@@ -47,7 +47,6 @@ class Lapadi {
         this.integration = new IntegrationService(this.config)
     }
 
-
 }
 
 export {Lapadi}

@@ -14,7 +14,7 @@
     "clean": "rm -rf ./dist tsconfig.tsbuildinfo",
     "prepublishOnly": "yarn run build",
     "preversion": "yarn run test",
-    "postversion": "git push origin main --follow-tags && echo \"Log in to shipit to deploy version $npm_package_version\""
+    "postversion": "git push origin master --follow-tags && echo \"Log in to shipit to deploy version $npm_package_version\""
   },
   "publishConfig": {
     "access": "public"
