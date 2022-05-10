@@ -1,0 +1,46 @@
+{
+  "name": "lapadi-node-sdk",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "jest",
+    "build": "tsc",
+    "lint": "eslint '**/*.{ts,tsx}' --max-warnings 0",
+    "clean": "rm -rf ./dist tsconfig.tsbuildinfo",
+    "prepublishOnly": "yarn run build",
+    "preversion": "yarn run test",
+    "postversion": "git push origin main --follow-tags && echo \"Log in to shipit to deploy version $npm_package_version\""
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lapadi/node-sdk.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lapadi/node-sdk/issues"
+  },
+  "homepage": "https://github.com/lapadi/node-sdk",
+  "keywords": [],
+  "author": "Lapadi Inc.",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/js-cookie": "^3.0.1",
+    "@types/node-fetch": "^2.6.1",
+    "@types/qs": "^6.9.7",
+    "typescript": "^4.5.5"
+  },
+  "dependencies": {
+    "js-cookie": "^3.0.1",
+    "node-fetch": "^3.2.0",
+    "qs": "^6.10.3",
+    "querystring": "^0.2.1",
+    "universal-cookie": "^4.0.4"
+  }
+}
