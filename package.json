@@ -1,5 +1,5 @@
 {
-  "name": "@lapadi/node-sdk",
+  "name": "lapadi-node-sdk",
   "version": "1.0.1",
   "description": "",
   "main": "dist/index.js",
@@ -28,7 +28,7 @@
   },
   "homepage": "https://github.com/lapadi/node-sdk",
   "keywords": [],
-  "author": "Lapadi Inc.",
+  "author": "halildogan <hello@halildogan.ca>",
   "license": "ISC",
   "devDependencies": {
     "@types/js-cookie": "^3.0.1",
