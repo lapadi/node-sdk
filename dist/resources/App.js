@@ -12,11 +12,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.App = void 0;
 const Contact_1 = require("./Contact");
 class App {
+    /**
+     * Creates an instance of app.
+     * @param config
+     */
     constructor(config) {
         this._config = config;
-        this.protocol = this._config.api.protocol || 'https://';
-        this.host = this._config.api.host || "api.lapadi.com";
-        this.api_version = this._config.api.version || 'v1';
+        this.protocol = config.api.protocol || 'https://';
+        this.host = config.api.host || "api.lapadi.com";
+        this.api_version = config.api.version || 'v1';
         this._config.api_endpoint = `${this.protocol}${this.host}/api/${this.api_version}`;
         this.contact = new Contact_1.Contact(this._config);
     }

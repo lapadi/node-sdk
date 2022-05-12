@@ -16,18 +16,19 @@ const qs = require("qs");
  */
 class Contact {
     /**
-    * Creates an instance of documenter.
-    */
+     * Creates an instance of contact.
+     * @param _config
+     */
     constructor(_config) {
         this._config = _config;
     }
     /**
-     * // TODO: comment getScriptVersion
-     * Gets script version
+     * Sends mail of on App
      * @param data
-     * @returns script version
-    */
+     * @returns send
+     */
     send(data) {
+        console.log('MailSend _Config: ', this._config);
         console.log("MailSendData: ", data);
         return new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
             const parameters = {

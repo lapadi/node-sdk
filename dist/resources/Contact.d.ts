@@ -4,17 +4,20 @@ import { MailSendData } from '../types';
  * Contact
  */
 export declare class Contact {
+    /**
+     * Config  of contact
+     */
     _config: LapadiConfig;
     /**
-    * Creates an instance of documenter.
-    */
+     * Creates an instance of contact.
+     * @param _config
+     */
     constructor(_config: LapadiConfig);
     /**
-     * // TODO: comment getScriptVersion
-     * Gets script version
+     * Sends mail of on App
      * @param data
-     * @returns script version
-    */
-    send(data: MailSendData): Promise<unknown>;
+     * @returns send
+     */
+    send(data: MailSendData): Promise<any | any>;
 }
 //# sourceMappingURL=Contact.d.ts.map
