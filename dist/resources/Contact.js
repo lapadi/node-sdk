@@ -9,29 +9,41 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.MailService = void 0;
-const _1 = require(".");
-class MailService extends _1.AppService {
-    constructor(config) {
-        super(config);
+exports.Contact = void 0;
+const qs = require("qs");
+/**
+ * Contact
+ */
+class Contact {
+    /**
+    * Creates an instance of documenter.
+    */
+    constructor(_config) {
+        this._config = _config;
     }
-    create(data) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const API_ENDPOINT = `${this.lapadi_api_endpoint}/apps/${data.app.id || this.lapadi_app_id}/mail`;
+    /**
+     * // TODO: comment getScriptVersion
+     * Gets script version
+     * @param data
+     * @returns script version
+    */
+    send(data) {
+        console.log("MailSendData: ", data);
+        return new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
             const parameters = {
                 method: 'POST',
                 headers: {
                     // 'Content-Type': 'application/json'
                     'Content-Type': 'application/x-www-form-urlencoded',
-                    'x-access-token': this.lapadi_app_token
+                    'x-access-token': this._config.app.token
                 },
-                body: JSON.stringify(data)
+                body: qs.stringify(data)
             };
-            return yield fetch(API_ENDPOINT, parameters)
+            yield fetch(`${this._config.api_endpoint}/apps/${this._config.app.id}/mail`, parameters)
                 .then(res => res.json())
-                .then(res => res)
-                .catch(error => error);
-        });
+                .then(res => resolve(res))
+                .catch(error => reject(error));
+        }));
     }
 }
-exports.MailService = MailService;
+exports.Contact = Contact;
