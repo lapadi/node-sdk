@@ -1,5 +1,5 @@
-import { LapadiConfig } from '../lapadi';
-import { MailSendData } from '../types';
+import { LapadiConfig } from '../../lapadi';
+import { MailSendData } from '../../types';
 /**
  * Contact
  */

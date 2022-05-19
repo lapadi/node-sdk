@@ -79,6 +79,10 @@ export interface SelectApp {
     slug?: string;
     token: string;
 }
+export interface AppLoginData {
+    email: string;
+    password: string;
+}
 export interface RequestOptions {
     /**
      * Use a specific API Key for this request.
@@ -178,6 +182,9 @@ interface MailTo {
     surname: string;
     email: string;
     phone: string;
+}
+export interface FilterContent {
+    (x: string): object;
 }
 export {};
 //# sourceMappingURL=index.d.ts.map
