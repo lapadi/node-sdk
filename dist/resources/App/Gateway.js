@@ -9,66 +9,31 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Contact = void 0;
-const qs = require("qs");
-/**
- * Contact
- */
-class Contact {
-    /**
-     * Creates an instance of contact.
-     * @param _config
-     */
+exports.Gateway = void 0;
+class Gateway {
     constructor(_config) {
         this._config = _config;
-        this.comment = new Comment(this._config);
-        this.price = new Price(this._config);
     }
     /**
-     * Sends mail of on App
-     * @param data
-     * @returns send
+     * Lists gateway
+     * @param filter
+     * @returns
      */
-    send(data) {
-        console.log('MailSend _Config: ', this._config);
-        console.log("MailSendData: ", data);
+    list(filter) {
         return new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
             const parameters = {
-                method: 'POST',
+                method: 'GET',
                 headers: {
                     // 'Content-Type': 'application/json'
                     'Content-Type': 'application/x-www-form-urlencoded',
                     'x-access-token': this._config.app.token
-                },
-                body: qs.stringify(data)
+                }
             };
-            yield fetch(`${this._config.api_endpoint}/apps/${this._config.app.id}/mail`, parameters)
+            yield fetch(`${this._config.api_endpoint}/auth/me`, parameters)
                 .then(res => res.json())
                 .then(res => resolve(res))
                 .catch(error => reject(error));
         }));
     }
 }
-exports.Contact = Contact;
-class Comment {
-    constructor(_config) {
-        this._config = _config;
-    }
-    create() {
-    }
-    update(id, data) {
-    }
-    list(filter) {
-    }
-    delete(id) {
-    }
-}
-class Price {
-    constructor(_config) {
-        this._config = _config;
-    }
-    show(id) {
-    }
-    list(filter) {
-    }
-}
+exports.Gateway = Gateway;

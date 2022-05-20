@@ -83,6 +83,14 @@ export interface AppLoginData {
     email: string;
     password: string;
 }
+export interface AppRegisterData {
+    name: string;
+    surname: string;
+    gender: string;
+    phone: string;
+    email: string;
+    password: string;
+}
 export interface RequestOptions {
     /**
      * Use a specific API Key for this request.
@@ -185,6 +193,9 @@ interface MailTo {
 }
 export interface FilterContent {
     (x: string): object;
+}
+export interface FilterGateway {
+    type: string;
 }
 export {};
 //# sourceMappingURL=index.d.ts.map

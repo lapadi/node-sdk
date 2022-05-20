@@ -3,6 +3,7 @@ import { Contact } from './Contact';
 import { Auth } from './Auth';
 import { Content } from './Content';
 import { Shop } from './Shop';
+import { Gateway } from './Gateway';
 export declare class App {
     /**
      * Config  of app
@@ -15,6 +16,7 @@ export declare class App {
     auth: Auth;
     content: Content;
     shop: Shop;
+    gateway: Gateway;
     protocol?: string;
     host?: string;
     api_version: string;

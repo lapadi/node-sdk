@@ -14,6 +14,7 @@ const Contact_1 = require("./Contact");
 const Auth_1 = require("./Auth");
 const Content_1 = require("./Content");
 const Shop_1 = require("./Shop");
+const Gateway_1 = require("./Gateway");
 class App {
     /**
      * Creates an instance of app.
@@ -29,6 +30,7 @@ class App {
         this.auth = new Auth_1.Auth(this._config);
         this.content = new Content_1.Content(this._config);
         this.shop = new Shop_1.Shop(this._config);
+        this.gateway = new Gateway_1.Gateway(this._config);
     }
     /**
      * Gets app
