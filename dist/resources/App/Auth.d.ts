@@ -1,5 +1,5 @@
 import { LapadiConfig } from '../../lapadi';
-import { AppLoginData, AppRegisterData } from '../../types';
+import { AppLoginData, AppRegisterData, AppUserRegisterResponse } from '../../types';
 import { Address } from './User';
 /**
  * Auth
@@ -23,17 +23,18 @@ export declare class Auth {
      */
     login(data: AppLoginData): Promise<any | any>;
     /**
-     * Registers auth register
-     * @param data register
-     * @returns register
+     * Registers auth
+     * @param data
+     * @returns
      */
-    register(data: AppRegisterData): Promise<unknown>;
+    register(data: AppRegisterData): Promise<AppUserRegisterResponse | any>;
     /**
      * auth me
      * @returns
-     */
+    */
     me(): Promise<unknown>;
     update(data: any): void;
     session(): void;
+    recovery(email: string): Promise<unknown>;
 }
 //# sourceMappingURL=Auth.d.ts.map

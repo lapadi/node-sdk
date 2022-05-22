@@ -49,9 +49,9 @@ class Auth {
         }));
     }
     /**
-     * Registers auth register
-     * @param data register
-     * @returns register
+     * Registers auth
+     * @param data
+     * @returns
      */
     register(data) {
         console.log('AppRegisterData _Config: ', this._config);
@@ -75,7 +75,7 @@ class Auth {
     /**
      * auth me
      * @returns
-     */
+    */
     me() {
         return new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
             const parameters = {
@@ -96,6 +96,24 @@ class Auth {
     update(data) {
     }
     session() {
+    }
+    recovery(email) {
+        console.log('recovery _Config: ', this._config);
+        return new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
+            const parameters = {
+                method: 'POST',
+                headers: {
+                    // 'Content-Type': 'application/json'
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'x-access-token': this._config.app.token
+                },
+                body: qs.stringify(email)
+            };
+            yield fetch(`${this._config.api_endpoint}/auth/recovery_password`, parameters)
+                .then(res => res.json())
+                .then(res => resolve(res))
+                .catch(error => reject(error));
+        }));
     }
 }
 exports.Auth = Auth;

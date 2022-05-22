@@ -197,5 +197,25 @@ export interface FilterContent {
 export interface FilterGateway {
     type: string;
 }
+export interface User {
+    id: string;
+    name: string;
+    surname: string;
+    email: string;
+    phone: string;
+}
+export interface AppUser {
+    id: string;
+    name: string;
+    surname: string;
+    email: string;
+    phone: string;
+    user: User;
+}
+export interface AppUserRegisterResponse {
+    path: string;
+    token: string;
+    user: AppUser;
+}
 export {};
 //# sourceMappingURL=index.d.ts.map

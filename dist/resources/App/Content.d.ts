@@ -14,5 +14,6 @@ export declare class Content {
      */
     constructor(_config: LapadiConfig);
     list(filter: FilterContent): Promise<any | any>;
+    detail(slug: string): Promise<unknown>;
 }
 //# sourceMappingURL=Content.d.ts.map

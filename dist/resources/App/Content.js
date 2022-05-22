@@ -44,5 +44,21 @@ class Content {
                 .catch(error => reject(error));
         }));
     }
+    detail(slug) {
+        return new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
+            const parameters = {
+                method: 'GET',
+                headers: {
+                    // 'Content-Type': 'application/json'
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'x-access-token': this._config.app.token
+                }
+            };
+            yield fetch(`${this._config.api_endpoint}/contents/${slug}`, parameters)
+                .then(res => res.json())
+                .then(res => resolve(res))
+                .catch(error => reject(error));
+        }));
+    }
 }
 exports.Content = Content;
