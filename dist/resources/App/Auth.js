@@ -15,12 +15,20 @@ const User_1 = require("./User");
 /**
  * Auth
  */
+let token;
+if (typeof window !== 'undefined') {
+    const data = localStorage.getItem('_token');
+    if (data !== null) {
+        token = JSON.parse(data);
+    }
+}
 class Auth {
     /**
      * Creates an instance of auth.
      * @param _config
      */
     constructor(_config) {
+        this._token = token;
         this._config = _config;
         this.address = new User_1.Address(this._config);
     }
@@ -29,9 +37,13 @@ class Auth {
      * @param data
      * @returns login
      */
+    get token() {
+        return this._token;
+    }
+    set token(token) {
+        this._token = token;
+    }
     login(data) {
-        console.log('AppLoginData _Config: ', this._config);
-        console.log("AppLoginData: ", data);
         return new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
             const parameters = {
                 method: 'POST',
@@ -44,7 +56,11 @@ class Auth {
             };
             yield fetch(`${this._config.api_endpoint}/auth/login`, parameters)
                 .then(res => res.json())
-                .then(res => resolve(res))
+                .then((res) => {
+                const { data } = res;
+                data && data.token && localStorage.setItem('_token', JSON.stringify(data.token));
+                return resolve(res);
+            })
                 .catch(error => reject(error));
         }));
     }
@@ -54,8 +70,6 @@ class Auth {
      * @returns
      */
     register(data) {
-        console.log('AppRegisterData _Config: ', this._config);
-        console.log("AppRegisterData: ", data);
         return new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
             const parameters = {
                 method: 'POST',
@@ -76,7 +90,9 @@ class Auth {
      * auth me
      * @returns
     */
-    me() {
+    me(token) {
+        const _token = token || this.token;
+        console.log("tokenenennene: ", _token);
         return new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
             const parameters = {
                 method: 'GET',
@@ -84,7 +100,7 @@ class Auth {
                     // 'Content-Type': 'application/json'
                     'Content-Type': 'application/x-www-form-urlencoded',
                     'x-access-token': this._config.app.token,
-                    'Authorization': 'Bearer ' + this.token,
+                    'token': _token,
                 }
             };
             yield fetch(`${this._config.api_endpoint}/auth/me`, parameters)
@@ -94,8 +110,6 @@ class Auth {
         }));
     }
     update(data) {
-    }
-    session() {
     }
     recovery(email) {
         console.log('recovery _Config: ', this._config);

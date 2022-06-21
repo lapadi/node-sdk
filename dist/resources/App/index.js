@@ -37,7 +37,6 @@ class App {
      * @returns
      */
     get() {
-        console.log('api_endpoint: ', this._config.api_endpoint);
         return new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
             const parameters = {
                 method: 'GET',
@@ -48,6 +47,22 @@ class App {
                 }
             };
             yield fetch(`${this._config.api_endpoint}/apps/${this._config.app.id}`, parameters)
+                .then(res => res.json())
+                .then(res => resolve(res))
+                .catch(error => reject(error));
+        }));
+    }
+    list() {
+        return new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
+            const parameters = {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    //   'Content-Type': 'application/x-www-form-urlencoded',
+                    'x-access-token': this._config.app.token
+                }
+            };
+            yield fetch(`${this._config.api_endpoint}/apps`, parameters)
                 .then(res => res.json())
                 .then(res => resolve(res))
                 .catch(error => reject(error));

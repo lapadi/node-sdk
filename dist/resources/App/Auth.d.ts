@@ -1,15 +1,12 @@
 import { LapadiConfig } from '../../lapadi';
 import { AppLoginData, AppRegisterData, AppUserRegisterResponse } from '../../types';
 import { Address } from './User';
-/**
- * Auth
- */
 export declare class Auth {
     /**
      * Config  of autth
      */
     _config: LapadiConfig;
-    token: string | undefined;
+    private _token;
     address: Address;
     /**
      * Creates an instance of auth.
@@ -21,6 +18,8 @@ export declare class Auth {
      * @param data
      * @returns login
      */
+    get token(): string;
+    set token(token: string);
     login(data: AppLoginData): Promise<any | any>;
     /**
      * Registers auth
@@ -32,9 +31,8 @@ export declare class Auth {
      * auth me
      * @returns
     */
-    me(): Promise<unknown>;
+    me(token?: string): Promise<unknown>;
     update(data: any): void;
-    session(): void;
     recovery(email: string): Promise<unknown>;
 }
 //# sourceMappingURL=Auth.d.ts.map
