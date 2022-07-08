@@ -43,7 +43,7 @@ class Auth {
     set token(token) {
         this._token = token;
     }
-    login(data) {
+    login(body) {
         return new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
             const parameters = {
                 method: 'POST',
@@ -52,7 +52,7 @@ class Auth {
                     'Content-Type': 'application/x-www-form-urlencoded',
                     'x-access-token': this._config.app.token
                 },
-                body: qs.stringify(data)
+                body: qs.stringify(body)
             };
             yield fetch(`${this._config.api_endpoint}/auth/login`, parameters)
                 .then(res => res.json())

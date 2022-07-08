@@ -79,7 +79,19 @@ export interface SelectApp {
     slug?: string;
     token: string;
 }
-export interface AppLoginData {
+export interface LoginData {
+    email: string;
+    password: string;
+}
+export interface LoginData {
+    email: string;
+    password: string;
+}
+export interface RegisterData {
+    name: string;
+    surname: string;
+    gender: string;
+    phone: string;
     email: string;
     password: string;
 }
@@ -216,6 +228,10 @@ export interface AppUserRegisterResponse {
     path: string;
     token: string;
     user: AppUser;
+}
+export interface AppLoginData {
+    email: string;
+    password: string;
 }
 export {};
 //# sourceMappingURL=index.d.ts.map

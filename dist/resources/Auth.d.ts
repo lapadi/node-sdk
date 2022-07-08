@@ -1,13 +1,11 @@
-import { LapadiConfig } from '../../lapadi';
-import { AppLoginData, AppRegisterData, AppUserRegisterResponse } from '../../types';
-import { Address } from './User';
+import { LapadiConfig } from '../lapadi';
+import { LoginData, RegisterData, AppUserRegisterResponse } from '../types';
 export declare class Auth {
     /**
      * Config  of autth
      */
     _config: LapadiConfig;
     private _token;
-    address: Address;
     /**
      * Creates an instance of auth.
      * @param _config
@@ -20,13 +18,13 @@ export declare class Auth {
      */
     get token(): string;
     set token(token: string);
-    login(body: AppLoginData): Promise<any | any>;
+    login(data: LoginData): Promise<any | any>;
     /**
      * Registers auth
      * @param data
      * @returns
      */
-    register(data: AppRegisterData): Promise<AppUserRegisterResponse | any>;
+    register(data: RegisterData): Promise<AppUserRegisterResponse | any>;
     /**
      * auth me
      * @returns

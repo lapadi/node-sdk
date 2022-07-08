@@ -9,77 +9,115 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Content = void 0;
+exports.Auth = void 0;
 const qs = require("qs");
 /**
- * Content
+ * Auth
  */
-class Content {
+let token;
+if (typeof window !== 'undefined') {
+    const data = localStorage.getItem('_token');
+    if (data !== null) {
+        token = JSON.parse(data);
+    }
+}
+class Auth {
     /**
-     * Creates an instance of content.
+     * Creates an instance of auth.
      * @param _config
      */
     constructor(_config) {
+        this._token = token;
         this._config = _config;
     }
-    list(filter) {
-        console.log('FilterContent _Config: ', this._config);
-        // let par = new URLSearchParams(filter).toString();
-        let str = qs.stringify({
-            filter
-        });
-        console.log("str: ", str);
+    /**
+     * Logins auth
+     * @param data
+     * @returns login
+     */
+    get token() {
+        return this._token;
+    }
+    set token(token) {
+        this._token = token;
+    }
+    login(data) {
         return new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
             const parameters = {
-                method: 'GET',
+                method: 'POST',
                 headers: {
                     // 'Content-Type': 'application/json'
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                    'x-access-token': this._config.app.token
-                }
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: qs.stringify(data)
             };
-            yield fetch(`${this._config.api_endpoint}/contents?${str}`, parameters)
+            yield fetch(`${this._config.api_endpoint}/auth/login`, parameters)
                 .then(res => res.json())
-                .then(res => resolve(res))
+                .then((res) => resolve(res))
                 .catch(error => reject(error));
         }));
     }
-    detail(slug) {
+    /**
+     * Registers auth
+     * @param data
+     * @returns
+     */
+    register(data) {
         return new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
             const parameters = {
-                method: 'GET',
+                method: 'POST',
                 headers: {
                     // 'Content-Type': 'application/json'
                     'Content-Type': 'application/x-www-form-urlencoded',
                     'x-access-token': this._config.app.token
-                }
+                },
+                body: qs.stringify(data)
             };
-            yield fetch(`${this._config.api_endpoint}/contents/${slug}`, parameters)
+            yield fetch(`${this._config.api_endpoint}/auth/register`, parameters)
                 .then(res => res.json())
                 .then(res => resolve(res))
                 .catch(error => reject(error));
         }));
     }
     /**
-     * Comments content
-     * @param id
+     * auth me
      * @returns
-     */
-    comments(id) {
+    */
+    me(token) {
+        const _token = token || this.token;
         return new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
             const parameters = {
                 method: 'GET',
                 headers: {
                     // 'Content-Type': 'application/json'
                     'Content-Type': 'application/x-www-form-urlencoded',
-                    'x-access-token': this._config.app.token
+                    'token': _token,
                 }
             };
-            yield fetch(`${this._config.api_endpoint}/contents/${id}/comments`, parameters)
+            yield fetch(`${this._config.api_endpoint}/auth/me`, parameters)
+                .then(res => res.json())
+                .then(res => resolve(res))
+                .catch(error => reject(error));
+        }));
+    }
+    update(data) {
+    }
+    recovery(email) {
+        console.log('recovery _Config: ', this._config);
+        return new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
+            const parameters = {
+                method: 'POST',
+                headers: {
+                    // 'Content-Type': 'application/json'
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: qs.stringify(email)
+            };
+            yield fetch(`${this._config.api_endpoint}/auth/recovery_password`, parameters)
                 .then(res => res.json())
                 .then(res => resolve(res))
                 .catch(error => reject(error));
         }));
     }
 }
-exports.Content = Content;
+exports.Auth = Auth;

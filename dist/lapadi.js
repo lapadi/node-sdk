@@ -10,6 +10,7 @@ class Lapadi {
     constructor(options) {
         this._config = options;
         this.app = new resources_1.App(this._config);
+        this.auth = new resources_1.Auth(this._config);
     }
 }
 exports.Lapadi = Lapadi;
