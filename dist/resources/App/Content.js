@@ -23,12 +23,10 @@ class Content {
         this._config = _config;
     }
     list(filter) {
-        console.log('FilterContent _Config: ', this._config);
         // let par = new URLSearchParams(filter).toString();
         let str = qs.stringify({
             filter
         });
-        console.log("str: ", str);
         return new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
             const parameters = {
                 method: 'GET',
@@ -62,10 +60,13 @@ class Content {
     }
     /**
      * Comments content
-     * @param id
+     * @param filter
      * @returns
      */
-    comments(id) {
+    comments(filter) {
+        let str = qs.stringify({
+            filter
+        });
         return new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
             const parameters = {
                 method: 'GET',
@@ -75,7 +76,24 @@ class Content {
                     'x-access-token': this._config.app.token
                 }
             };
-            yield fetch(`${this._config.api_endpoint}/contents/${id}/comments`, parameters)
+            yield fetch(`${this._config.api_endpoint}/comments?${str}`, parameters)
+                .then(res => res.json())
+                .then(res => resolve(res))
+                .catch(error => reject(error));
+        }));
+    }
+    addComment(body) {
+        return new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
+            const parameters = {
+                method: 'POST',
+                headers: {
+                    // 'Content-Type': 'application/json'
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'x-access-token': this._config.app.token
+                },
+                body: qs.stringify(body)
+            };
+            yield fetch(`${this._config.api_endpoint}/comments`, parameters)
                 .then(res => res.json())
                 .then(res => resolve(res))
                 .catch(error => reject(error));

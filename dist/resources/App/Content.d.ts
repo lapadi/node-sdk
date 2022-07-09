@@ -17,9 +17,10 @@ export declare class Content {
     detail(slug: string): Promise<unknown>;
     /**
      * Comments content
-     * @param id
+     * @param filter
      * @returns
      */
-    comments(id: string): Promise<unknown>;
+    comments(filter: any): Promise<unknown>;
+    addComment(body: any): Promise<unknown>;
 }
 //# sourceMappingURL=Content.d.ts.map
