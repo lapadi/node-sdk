@@ -54,7 +54,7 @@ class Auth {
                 },
                 body: qs.stringify(body)
             };
-            yield fetch(`${this._config.api_endpoint}/auth/login`, parameters)
+            yield fetch(`${this._config.api_endpoint}/app/auth/login`, parameters)
                 .then(res => res.json())
                 .then((res) => {
                 const { data } = res;
@@ -80,7 +80,7 @@ class Auth {
                 },
                 body: qs.stringify(data)
             };
-            yield fetch(`${this._config.api_endpoint}/auth/register`, parameters)
+            yield fetch(`${this._config.api_endpoint}/app/auth/register`, parameters)
                 .then(res => res.json())
                 .then(res => resolve(res))
                 .catch(error => reject(error));
@@ -103,14 +103,13 @@ class Auth {
                     'token': _token,
                 }
             };
-            yield fetch(`${this._config.api_endpoint}/auth/me`, parameters)
+            yield fetch(`${this._config.api_endpoint}/app/auth/me`, parameters)
                 .then(res => res.json())
                 .then(res => resolve(res))
                 .catch(error => reject(error));
         }));
     }
-    update(data) {
-    }
+    update(data) { }
     recovery(email) {
         console.log('recovery _Config: ', this._config);
         return new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
@@ -123,7 +122,7 @@ class Auth {
                 },
                 body: qs.stringify(email)
             };
-            yield fetch(`${this._config.api_endpoint}/auth/recovery_password`, parameters)
+            yield fetch(`${this._config.api_endpoint}/app/auth/recovery_password`, parameters)
                 .then(res => res.json())
                 .then(res => resolve(res))
                 .catch(error => reject(error));
