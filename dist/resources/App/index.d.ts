@@ -31,5 +31,6 @@ export declare class App {
      */
     get(): Promise<unknown>;
     list(): Promise<unknown>;
+    allApps(): Promise<unknown>;
 }
 //# sourceMappingURL=index.d.ts.map

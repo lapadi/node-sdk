@@ -68,5 +68,20 @@ class App {
                 .catch(error => reject(error));
         }));
     }
+    allApps() {
+        return new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
+            const parameters = {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    //   'Content-Type': 'application/x-www-form-urlencoded',
+                }
+            };
+            yield fetch(`${this._config.api_endpoint}/apps/list`, parameters)
+                .then(res => res.json())
+                .then(res => resolve(res))
+                .catch(error => reject(error));
+        }));
+    }
 }
 exports.App = App;
