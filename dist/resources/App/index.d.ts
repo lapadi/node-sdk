@@ -1,4 +1,5 @@
 import { LapadiConfig } from '../../lapadi';
+import { AppsResponse } from '../../types';
 import { Contact } from './Contact';
 import { Auth } from './Auth';
 import { Content } from './Content';
@@ -31,6 +32,6 @@ export declare class App {
      */
     get(): Promise<unknown>;
     list(): Promise<unknown>;
-    allApps(): Promise<unknown>;
+    allApps(): Promise<AppsResponse | undefined>;
 }
 //# sourceMappingURL=index.d.ts.map

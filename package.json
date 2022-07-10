@@ -1,6 +1,6 @@
 {
   "name": "@lapadi/node-sdk",
-  "version": "1.0.3",
+  "version": "1.0.7",
   "description": "",
   "main": "dist/lapadi.js",
   "types": "dist/lapadi.d.ts",

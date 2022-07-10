@@ -233,5 +233,9 @@ export interface AppLoginData {
     email: string;
     password: string;
 }
+export interface AppsResponse {
+    list: [];
+    total: number;
+}
 export {};
 //# sourceMappingURL=index.d.ts.map
