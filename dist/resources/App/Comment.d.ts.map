@@ -1,0 +1,1 @@
+{"version":3,"file":"Comment.d.ts","sourceRoot":"","sources":["../../../lib/resources/App/Comment.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,YAAY,EAAE,MAAM,cAAc,CAAA;AAE3C;;GAEG;AACH,qBAAa,OAAO;IAElB;;OAEG;IACH,OAAO,EAAE,YAAY,CAAA;IAErB;;;OAGG;gBACU,OAAO,EAAE,YAAY;IAIlC;;;;OAIG;IACH,QAAQ,CAAC,MAAM,EAAE,GAAG;IAkBpB,UAAU,CAAC,IAAI,EAAE,GAAG;CAiBrB"}

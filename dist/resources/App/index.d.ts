@@ -5,11 +5,15 @@ import { Auth } from './Auth';
 import { Content } from './Content';
 import { Shop } from './Shop';
 import { Gateway } from './Gateway';
+import { Comment } from './Comment';
 export declare class App {
     /**
      * Config  of app
      */
     _config: LapadiConfig;
+    protocol?: string;
+    host?: string;
+    api_version: string;
     /**
      * Contact  of app
      */
@@ -18,9 +22,7 @@ export declare class App {
     content: Content;
     shop: Shop;
     gateway: Gateway;
-    protocol?: string;
-    host?: string;
-    api_version: string;
+    comment: Comment;
     /**
      * Creates an instance of app.
      * @param config
