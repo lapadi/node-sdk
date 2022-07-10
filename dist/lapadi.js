@@ -11,6 +11,7 @@ class Lapadi {
         this._config = options;
         this.app = new resources_1.App(this._config);
         this.auth = new resources_1.Auth(this._config);
+        this.user = new resources_1.User(this._config);
     }
 }
 exports.Lapadi = Lapadi;

@@ -1,5 +1,5 @@
 import { LapadiConfig, LapadiOptions } from './types';
-import { App, Auth } from './resources';
+import { App, Auth, User } from './resources';
 declare class Lapadi {
     /**
      * Config  of lapadi
@@ -10,6 +10,7 @@ declare class Lapadi {
      */
     app: App;
     auth: Auth;
+    user: User;
     /**
      * Creates an instance of lapadi.
      * @param options
